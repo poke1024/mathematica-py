@@ -1,0 +1,207 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7933,        199]
+NotebookOptionsPosition[      6349,        164]
+NotebookOutlinePosition[      6686,        179]
+CellTagsIndexPosition[      6643,        176]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"AppendTo", "[", 
+   RowBox[{"$Path", ",", 
+    RowBox[{"NotebookDirectory", "[", "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Needs", "[", "\"\<Py`\>\"", "]"}]}], "Input",
+ CellChangeTimes->{{3.788257967817842*^9, 3.7882579840830383`*^9}, {
+  3.788258431664474*^9, 3.7882584318749027`*^9}},
+ CellLabel->"In[66]:=",ExpressionUUID->"379599ce-9b51-4b4e-8f6f-4908ad38faf6"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{
+  3.788333859982707*^9},ExpressionUUID->"e28ee8d1-2b12-42e4-8e39-\
+375f6892a11d"],
+
+Cell[CellGroupData[{
+
+Cell["start a python session in a specific conda environment.", "Subsubtitle",
+ CellChangeTimes->{3.788333810884595*^9, 
+  3.788333873127557*^9},ExpressionUUID->"8b24d229-710c-4472-90ee-\
+6c05da2fbbaf"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"PyStart", "[", "\"\<nteract\>\"", "]"}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "specify", " ", "name", " ", "of", " ", "your", " ", "existing", " ", 
+    "conda", " ", "environment", " ", "here"}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.788257810763238*^9, 3.788257813354851*^9}, {
+   3.788257997243643*^9, 3.7882580009883013`*^9}, {3.7882582776486883`*^9, 
+   3.788258277756048*^9}, {3.788258349917026*^9, 3.7882583515210533`*^9}, {
+   3.788258555227269*^9, 3.788258583403941*^9}, {3.788258631278167*^9, 
+   3.78825863318222*^9}, {3.788259125981639*^9, 3.788259159614217*^9}, {
+   3.788259897733161*^9, 3.788259931578611*^9}, {3.78825998657327*^9, 
+   3.788259989635036*^9}, {3.7882653370101633`*^9, 3.788265344010045*^9}, {
+   3.7882660553534813`*^9, 3.788266094141161*^9}, 3.788266177789686*^9, {
+   3.788272357534026*^9, 3.788272402619306*^9}, {3.788272488448554*^9, 
+   3.788272500517709*^9}, {3.788333794398302*^9, 3.788333851417039*^9}},
+ CellLabel->
+  "In[265]:=",ExpressionUUID->"eb336e3c-fb4f-48dc-b8c0-fe3d3087ff38"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{
+  3.7883338579916973`*^9},ExpressionUUID->"d8901eaa-d766-40ac-813c-\
+11e3df6507ce"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+import the class MyDemoClass from demo.py in the notebook folder.\
+\>", "Subsubtitle",
+ CellChangeTimes->{{3.788333844674559*^9, 
+  3.788333873848701*^9}},ExpressionUUID->"17b38c29-8c52-43db-be65-\
+666722f19ba3"],
+
+Cell[BoxData[
+ RowBox[{"PyImport", "[", 
+  RowBox[{
+   RowBox[{"{", "\"\<MyDemoClass\>\"", "}"}], ",", 
+   RowBox[{"\"\<From\>\"", "\[Rule]", "\"\<demo\>\""}]}], "]"}]], "Input",
+ CellLabel->
+  "In[266]:=",ExpressionUUID->"85697293-e5bf-47cd-87f0-c24b60968a48"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{
+  3.7883338625736227`*^9},ExpressionUUID->"a0ff236a-c6cb-4f1b-bd53-\
+a0ca3a9cd40c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["now call some Python code.", "Subsubtitle",
+ CellChangeTimes->{{3.7883338673924437`*^9, 
+  3.788333874631549*^9}},ExpressionUUID->"2c1dd8d5-d5ee-4d43-896b-\
+6a287a708ee7"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"demo", "=", 
+   RowBox[{
+    RowBox[{"PyClass", "[", "\"\<MyDemoClass\>\"", "]"}], "[", "1", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"PyMethod", "[", 
+   RowBox[{"demo", ",", " ", "\"\<compute\>\""}], "]"}], "[", "3", 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.788274209660185*^9, 3.78827421488234*^9}},
+ CellLabel->
+  "In[163]:=",ExpressionUUID->"bb9abae5-e007-47cf-80e6-d32fc36feb07"],
+
+Cell[BoxData["4"], "Output",
+ CellChangeTimes->{
+  3.7882578164415493`*^9, {3.7882579884749203`*^9, 3.788257994076881*^9}, {
+   3.788258342314622*^9, 3.788258354865617*^9}, {3.7882584387287903`*^9, 
+   3.7882584409919786`*^9}, {3.7882585497422647`*^9, 3.788258560736643*^9}, {
+   3.788258634397469*^9, 3.78825864739961*^9}, {3.788258911216535*^9, 
+   3.788258918402514*^9}, 3.788259337081615*^9, 3.7882594115975227`*^9, 
+   3.788259471316547*^9, 3.788259906095121*^9, {3.788259991019863*^9, 
+   3.788259998766971*^9}, 3.788261574927354*^9, 3.788261635320937*^9, {
+   3.788261842904221*^9, 3.788261902333334*^9}, {3.7882619532350388`*^9, 
+   3.788261981110237*^9}, 3.78826330028789*^9, 3.7882640503363943`*^9, 
+   3.788264171312417*^9, {3.788265345381072*^9, 3.788265367863234*^9}, 
+   3.7882654010979958`*^9, 3.788265466578348*^9, 3.788265577574683*^9, {
+   3.788265631964279*^9, 3.7882656825506287`*^9}, {3.7882657539474697`*^9, 
+   3.788265846480995*^9}, {3.788265890640732*^9, 3.788265914168048*^9}, {
+   3.788265964031785*^9, 3.788266040785625*^9}, 3.788266178901092*^9, {
+   3.78826631709028*^9, 3.788266329779643*^9}, 3.788266521690469*^9, 
+   3.788266655250661*^9, 3.788272351093054*^9, {3.788273592352324*^9, 
+   3.788273597796399*^9}, {3.788274207815208*^9, 3.7882742152419853`*^9}, 
+   3.7883327467297792`*^9},
+ CellLabel->
+  "Out[164]=",ExpressionUUID->"dea6466b-e19c-49bf-be89-4178e841596e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"PyMethod", "[", 
+   RowBox[{"demo", ",", "\"\<complex\>\""}], "]"}], "[", "]"}]], "Input",
+ CellChangeTimes->{{3.7882633050630903`*^9, 3.7882633423830357`*^9}, {
+   3.788264061792737*^9, 3.7882640683136683`*^9}, 3.788265363858955*^9, 
+   3.788273602289391*^9},
+ CellLabel->
+  "In[165]:=",ExpressionUUID->"6959e86f-ecf9-408a-924a-c58e926fcbe8"],
+
+Cell[BoxData[
+ RowBox[{"PyHandle", "[", "2", "]"}]], "Output",
+ CellChangeTimes->{{3.788265402030249*^9, 3.788265413407937*^9}, 
+   3.7882655802212887`*^9, {3.7882656327206697`*^9, 3.788265683290667*^9}, {
+   3.788265754716133*^9, 3.788265847118113*^9}, {3.788265892186035*^9, 
+   3.788265915148788*^9}, 3.788266180130395*^9, 3.788266330766745*^9, 
+   3.788266522599394*^9, 3.788266665246057*^9, {3.788273599049361*^9, 
+   3.788273602505601*^9}, 3.7883327476989098`*^9},
+ CellLabel->
+  "Out[165]=",ExpressionUUID->"3f63455f-70a2-4746-aa33-d98b6acdc2cd"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{865, 868},
+WindowMargins->{{98, Automatic}, {Automatic, 25}},
+FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 420, 9, 52, "Input",ExpressionUUID->"379599ce-9b51-4b4e-8f6f-4908ad38faf6"],
+Cell[981, 31, 147, 3, 52, "Input",ExpressionUUID->"e28ee8d1-2b12-42e4-8e39-375f6892a11d"],
+Cell[CellGroupData[{
+Cell[1153, 38, 202, 3, 31, "Subsubtitle",ExpressionUUID->"8b24d229-710c-4472-90ee-6c05da2fbbaf"],
+Cell[1358, 43, 1075, 18, 30, "Input",ExpressionUUID->"eb336e3c-fb4f-48dc-b8c0-fe3d3087ff38"],
+Cell[2436, 63, 149, 3, 52, "Input",ExpressionUUID->"d8901eaa-d766-40ac-813c-11e3df6507ce"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2622, 71, 222, 5, 31, "Subsubtitle",ExpressionUUID->"17b38c29-8c52-43db-be65-666722f19ba3"],
+Cell[2847, 78, 261, 6, 30, "Input",ExpressionUUID->"85697293-e5bf-47cd-87f0-c24b60968a48"],
+Cell[3111, 86, 149, 3, 52, "Input",ExpressionUUID->"a0ff236a-c6cb-4f1b-bd53-a0ca3a9cd40c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3297, 94, 177, 3, 31, "Subsubtitle",ExpressionUUID->"2c1dd8d5-d5ee-4d43-896b-6a287a708ee7"],
+Cell[CellGroupData[{
+Cell[3499, 101, 445, 12, 52, "Input",ExpressionUUID->"bb9abae5-e007-47cf-80e6-d32fc36feb07"],
+Cell[3947, 115, 1403, 21, 34, "Output",ExpressionUUID->"dea6466b-e19c-49bf-be89-4178e841596e"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5387, 141, 378, 8, 30, "Input",ExpressionUUID->"6959e86f-ecf9-408a-924a-c58e926fcbe8"],
+Cell[5768, 151, 553, 9, 68, "Output",ExpressionUUID->"3f63455f-70a2-4746-aa33-d98b6acdc2cd"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
