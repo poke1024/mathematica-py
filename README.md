@@ -29,3 +29,10 @@ This is usually not a problem for small experimental settings inside a notebook.
 As long as you are able to separate concerns of allocation, ´PyScoped` can help:
 
 ![Usage of PyScoped](/docs/docs4.png)
+
+# Limitations
+
+Many. For example, returned values may be either an object instance or primitive.
+However, objects inside containers like lists are not supported. The same is true
+for arguments passed to Python methods.
+
