@@ -10,20 +10,17 @@ class PyState:
 		self._objs = dict()
 		self._scopes = [set()]
 
-	def _next_handle(self):
-		self._handle += 1
-		return self._handle
-
 	def _check_handle(self, h):
 		if not isinstance(h, int):
-			raise RuntimeError('PyHandle[% s] is not valid' % h)
+			raise RuntimeError('PyHandle[%s] is not valid' % h)
 		if h not in self._objs:
-			raise RuntimeError('PyHandle[% s] is not valid' % h)
+			raise RuntimeError('PyHandle[%s] is not valid' % h)
 
 	def put(self, obj):
-		h = self._next_handle()
-		self._objs[h] = obj
-		self._scopes[-1].add(h)
+		h = id(obj)
+		if h not in self._objs:
+			self._objs[h] = obj
+			self._scopes[-1].add(h)
 		return h
 
 	def get(self, h):
