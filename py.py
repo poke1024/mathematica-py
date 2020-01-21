@@ -8,7 +8,7 @@ class PyState:
 	def __init__(self):
 		self._handle = 0
 		self._objs = dict()
-		self._scopes = list(set())
+		self._scopes = [set()]
 
 	def _next_handle(self):
 		self._handle += 1
@@ -56,21 +56,6 @@ def py_exit_scope():
 	global py_state
 	py_state.exit_scope()
 
-def py_create_instance(klass, args):
-	global py_state
-
-	k = globals()
-
-	parts = klass.split('.')
-	for i, p in enumerate(parts):
-		k = k.get(p)
-		if k is None:	
-			raise RuntimeError('could not resolve \'% s\'' % '.'.join(parts[:i + 1]))
-
-	obj = k(*args)
-
-	return py_state.put(obj)
-
 def _py_map_args(args):
 	global py_state
 	for arg in args:
@@ -88,6 +73,22 @@ def _py_wrap_result(r):
 		return wlexpr('PyHandle[%d]' % py_state.put(r))
 	else:
 		return r
+
+def py_create_instance(klass, args):
+	global py_state
+
+	k = globals()
+
+	parts = klass.split('.')
+	for i, p in enumerate(parts):
+		k = k.get(p)
+		if k is None:	
+			raise RuntimeError('could not resolve \'% s\'' % '.'.join(parts[:i + 1]))
+
+	args = list(_py_map_args(args))
+	obj = k(*args)
+
+	return py_state.put(obj)
 
 def py_call_method(handle, method, args):
 	global py_state
