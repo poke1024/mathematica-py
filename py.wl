@@ -16,8 +16,8 @@ PyMethod::usage=
 	"PyMethod[handle, name] specifies a callable class method
 	called name inside the class instance referenced by handle."
 
-PyGetAttr::usage=
-	"PyGetAttr[handle, name] reads an attribute value of an object."
+PyAttr::usage=
+	"PyAttr[handle, name] reads an attribute value of an object."
 
 PyEvaluate::usage=
 	"PyEvaluate[expr] evaluates expr in global Python session and
@@ -69,7 +69,7 @@ PyStartFromPrefix[condaPrefix_] :=
 		PyDeleteInternal,
 		PyEvaluateInternal,
 		PyExecuteInternal,
-		PyGetAttrInternal,
+		PyAttrInternal,
 		PyEnterScope,
 		PyExitScope},
 
@@ -91,7 +91,7 @@ PyCheckResult[ExternalEvaluate[PythonSession,
 
 PyClassInternal = ExternalFunction[PythonSession, "py_create_instance"];
 PyMethodInternal = ExternalFunction[PythonSession, "py_call_method"];
-PyGetAttrInternal = ExternalFunction[PythonSession, "py_get_attr"];
+PyAttrInternal = ExternalFunction[PythonSession, "py_get_attr"];
 PyEvaluateInternal = ExternalFunction[PythonSession, "py_evaluate"];
 PyExecuteInternal = ExternalFunction[PythonSession, "py_execute"];
 PyEnterScope = ExternalFunction[PythonSession, "py_enter_scope"];
@@ -102,8 +102,8 @@ PyClass[name_] := PyHandle[PyCheckResult[PyClassInternal[name, {##}]]]&;
 PyMethod[PyHandle[handle_], name_] := 
 	PyCheckResult[PyMethodInternal[handle,name,{##}]]&;
 
-PyGetAttr[PyHandle[handle_], name_] := 
-	PyCheckResult[PyGetAttrInternal[handle,name]];
+PyAttr[PyHandle[handle_], name_] := 
+	PyCheckResult[PyAttrInternal[handle,name]];
 
 PyDeleteInternal = ExternalFunction[PythonSession, "py_free_handle"];
 
