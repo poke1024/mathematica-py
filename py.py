@@ -4,6 +4,9 @@ import inspect
 from wolframclient.language import wlexpr
 from wolframclient.language.expression import WLFunction
 
+import types
+import collections
+
 class PyState:
 	def __init__(self):
 		self._handle = 0
@@ -68,6 +71,10 @@ def _py_is_non_primitive(x):
 def _py_wrap_result(r):
 	if _py_is_non_primitive(r):
 		return wlexpr('PyHandle[%d]' % py_state.put(r))
+	elif isinstance(r, types.GeneratorType):
+		return _py_wrap_result(list(r))
+	elif isinstance(r, collections.abc.Sequence) and not isinstance(r, str):
+		return type(r)([_py_wrap_result(x) for x in r])
 	else:
 		return r
 
